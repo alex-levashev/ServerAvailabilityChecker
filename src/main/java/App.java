@@ -4,7 +4,7 @@ import java.util.Map;
 
 //cat ./usr/lib/systemd/system/slackbot_mt_monitor.service
 //        [Unit]
-//        Description=Maintenance Queueu Monitor
+//        Description=Maintenance Queue Monitor
 //        [Service]
 //        ExecStart=/bin/bash /var/www/html/slackbot-java/service_start.sh
 //        Restart=always
@@ -51,7 +51,7 @@ public class App {
         HashMap<String, String> serverList = Servers.readCSV(file);
         HashMap<String, Boolean> serverStatus = new HashMap<>();
         Telegram telegramClient = new Telegram(telegramToken, chatId);
-        Boolean firstRunFlag = true;
+        boolean firstRunFlag = true;
         while(true) {
             for (HashMap.Entry<String, String> entry : serverList.entrySet()) {
                 Boolean currentServerStatus =  Servers.isAlive(entry.getValue());
@@ -66,7 +66,7 @@ public class App {
                 }
             }
             if(firstRunFlag) {
-                String message = new String();
+                String message = "";
                 for (HashMap.Entry<String, Boolean> item : serverStatus.entrySet()) {
                     message += "<b>" + item.getKey() + "</b>. Alive - <b>"
                             + item.getValue().toString().toUpperCase() + "</b>\n";
