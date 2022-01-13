@@ -4,7 +4,7 @@ Small tool for monitoring server health from the CSV file and send telegram mess
 JAR file should be run with parameters:
 java -jar ServerAvailabilityChecker.jar --apiToken "TelegramApiToken" --chatId "TelegramChatId" --file "path-to-CSV-file"
 ## CSV file format example
-Server name,IP,PORT\
+Server name,IP,PORT
 #### Example:
 Server 1,8.8.8.8:80\
 Server 2,9.9.9.9:21
@@ -25,7 +25,7 @@ WantedBy=multi-user.target
 ### Create service start script
 nano service_start.sh
 <pre>#/bin/bash
-/usr/bin/java -jar /path/to/ServerAvailabilityChecker.jar</pre>
+/usr/bin/java -jar /path/to/java -jar ServerAvailabilityChecker.jar --apiToken "TelegramApiToken" --chatId "TelegramChatId" --file "path-to-CSV-file"</pre>
 ### Create service stop script
 nano service_stop.sh
 <pre>#/bin/bash
